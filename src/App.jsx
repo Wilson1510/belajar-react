@@ -1,51 +1,77 @@
 import './index.css'
 import { useState } from 'react'
 
-const faqs = [
-  {
-    title: "Where are these chairs assembled?",
-    text:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus."
-  },
-  {
-    title: "How long do I have to return my chair?",
-    text:
-      "Pariatur recusandae dignissimos fuga voluptas unde optio nesciunt commodi beatae, explicabo natus."
-  },
-  {
-    title: "Do you ship to countries outside the EU?",
-    text:
-      "Excepturi velit laborum, perspiciatis nemo perferendis reiciendis aliquam possimus dolor sed! Dolore laborum ducimus veritatis facere molestias!"
-  }
-];
-
+const messages = [
+  'Learn React ⚛️',
+  'Apply for jobs 💼',
+  'Invest your new income 🤑',
+]
 
 function App() {
-
   return (
-    <div className="">
-      <Accordion data={faqs}/>
+    <div>
+      <Step />
     </div>
   )
 }
 
-function Accordion({ data }) {
-  return <div className='accordion'>
-    {data.map((faq, index) => (
-      <AccordionItem key={index} number={index + 1} title={faq.title} text={faq.text} />
-    ))}
-  </div>;
+function Step() {  
+  const [step, setStep] = useState(1)
+  const [isOpen, setIsOpen] = useState(true)
+
+  function handlePrevious() {
+    if (step > 1) setStep((s) => s - 1)
+  }
+  function handleNext() {
+    if (step < 3) setStep((s) => s + 1)
+  }
+
+  return (
+    <div>
+        <button className="close" onClick={() => setIsOpen((open) => !open)}>&times;</button>
+        {isOpen && <div className="steps">
+          <div className="numbers">
+            <div className={step >= 1 ? 'active' : ''}>1</div>
+            <div className={step >= 2 ? 'active' : ''}>2</div>
+            <div className={step >= 3 ? 'active' : ''}>3</div>
+          </div>
+    
+          <StepMessage step={step}>
+            {messages[step - 1]}
+            <div className="buttons">
+              <Button
+                bgColor='#e7e7e7'
+                textColor='#333'
+                onClick={() => alert('Learn how to learn React')}>
+                Learn how
+              </Button>
+            </div>
+          </StepMessage>
+    
+          <div className="buttons">
+            <Button bgColor='#7950f2' textColor='#fff' onClick={handlePrevious}>
+              <span>👈</span>Previous
+            </Button>
+            <Button bgColor='#7950f2' textColor='#fff' onClick={handleNext}>
+              Next<span>👉</span>
+            </Button>
+          </div>
+        </div>}
+    </div>
+  )
 }
 
-function AccordionItem({ number, title, text }) {
-  const [isOpen, setIsOpen] = useState(false)
+function Button({ bgColor, textColor, onClick, children }) {
+  return <button style={{ backgroundColor: bgColor, color: textColor }} onClick={onClick}>
+    {children}
+  </button>
+}
 
-  return <div className={`item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
-    <p className='number'>{number > 9 ? number : '0' + number }</p>
-    <p className='title'>{title}</p>
-    <p className='icon'>{isOpen ? '-' : '+'}</p>
-    {isOpen && <div className='content-box'>{text}</div>}
-  </div>;
+function StepMessage({ step, children }) {
+  return <div className="message">
+    <h3>Step {step}</h3>
+    {children}
+  </div>
 }
 
 export default App;
