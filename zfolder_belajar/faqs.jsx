@@ -30,21 +30,31 @@ function App() {
 }
 
 function Accordion({ data }) {
+  const [currentOpen, setCurrentOpen] = useState(null)
   return <div className='accordion'>
     {data.map((faq, index) => (
-      <AccordionItem key={index} number={index + 1} title={faq.title} text={faq.text} />
+      <AccordionItem
+        key={index}
+        number={index + 1}
+        title={faq.title}
+        currentOpen={currentOpen}
+        onOpen={setCurrentOpen} 
+      >
+        {faq.text}
+      </AccordionItem>
+      
     ))}
   </div>;
 }
 
-function AccordionItem({ number, title, text }) {
-  const [isOpen, setIsOpen] = useState(false)
+function AccordionItem({ number, title, currentOpen, onOpen, children }) {
+  const isOpen = currentOpen === number
 
-  return <div className={`item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+  return <div className={`item ${isOpen ? 'open' : ''}`} onClick={() => onOpen(isOpen ? null : number)}>
     <p className='number'>{number > 9 ? number : '0' + number }</p>
     <p className='title'>{title}</p>
     <p className='icon'>{isOpen ? '-' : '+'}</p>
-    {isOpen && <div className='content-box'>{text}</div>}
+    {isOpen && <div className='content-box'>{children}</div>}
   </div>;
 }
 
