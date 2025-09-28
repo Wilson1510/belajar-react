@@ -1,0 +1,22 @@
+.navLink {
+    color: #4f46e5; /* indigo-600 */
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.75rem 1rem; /* p-3 px-4 */
+    border-radius: 0.75rem; /* rounded-xl */
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .navLink:hover {
+    background-color: #e0e7ff; /* indigo-100 */
+    border-color: #a5b4fc; /* indigo-300 */
+  }
+
+  /* Styling saat NavLink aktif (.activeLink) */
+  .activeLink {
+    color: white;
+    background-color: #4f46e5; /* indigo-600 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    border-color: #4f46e5;
+  }
