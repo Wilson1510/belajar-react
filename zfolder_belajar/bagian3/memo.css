@@ -1,31 +1,42 @@
 body {
-    font-family: sans-serif;
-    background: #f9fafb;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: auto;
-  }
-  
-  button {
-    padding: 8px 14px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 6px;
-    background: #2563eb;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  .section {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: white;
-  }
-  
+  font-family: sans-serif;
+  background: #f9fafb;
+  margin: 0;
+  padding: 20px;
+}
+
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+
+button {
+  padding: 8px 14px;
+  margin: 6px 4px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+
+.box {
+  margin-top: 10px;
+  padding: 10px;
+  background: #e0e7ff;
+  border: 1px solid #a5b4fc;
+  border-radius: 6px;
+}
