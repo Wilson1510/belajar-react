@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+    .hijau {
+        @apply text-green-700 font-bold text-7xl;
+    }
+}
